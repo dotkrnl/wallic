@@ -1,4 +1,10 @@
 <p> Name: <%= @wallet.name %> </p>
 <p> Detail: <%= @wallet.detail %> </p>
-<p> read: <%= @wallet.secret_read %> </p>
-<p> r/w: <%= @wallet.secret_rw %> </p>
+<p> Sum: <%= @wallet.items.sum('delta') %> </p>
+
+<% if @wallet.read? session %><p> read: <%= @wallet.secret_read %> </p><% end %>
+<% if @wallet.write? session %><p> r/w: <%= @wallet.secret_rw %> </p><% end %>
+
+<%= render "items/form" %>
+
+<%= render @wallet.items %>

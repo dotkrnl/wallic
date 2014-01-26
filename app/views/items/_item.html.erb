@@ -1,0 +1,13 @@
+<h2><%= item.name %></h2>
+<p> <%= item.detail %> </p>
+<p> <%= item.delta %> </p>
+<p> <%= item.time %> </p>
+<p> <%= item.created_at %> </p>
+<p> <%= item.updated_at %> </p>
+<p>
+<% if item.created_at %>
+  <%= link_to 'x', [item.wallet, item],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+<% end %>
+</p>

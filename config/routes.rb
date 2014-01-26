@@ -1,6 +1,6 @@
 Wallic::Application.routes.draw do
   
-  resources :wallets, :shallow => true do
+  resources :wallets do
     resources :items
   end
 

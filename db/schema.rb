@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140126020623) do
+ActiveRecord::Schema.define(version: 20140126054816) do
+
+  create_table "items", force: true do |t|
+    t.string   "name"
+    t.text     "detail"
+    t.decimal  "delta"
+    t.datetime "time"
+    t.integer  "wallet_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "items", ["wallet_id"], name: "index_items_on_wallet_id"
 
   create_table "wallets", force: true do |t|
     t.string   "name"

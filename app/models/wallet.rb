@@ -1,5 +1,7 @@
 class Wallet < ActiveRecord::Base
 
+  has_many :items, dependent: :destroy
+
   def auth!(session, token)
     if not session[self.id]
       session[self.id] = {
