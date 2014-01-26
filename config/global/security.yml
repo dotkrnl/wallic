@@ -1,0 +1,8 @@
+development:
+  secret_len: 5
+
+test:
+  secret_len: 10
+
+production:
+  secret_len: 5

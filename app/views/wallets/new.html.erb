@@ -1,0 +1,14 @@
+<h1>New Wallet</h1>
+<%= form_for :wallet, url: wallets_path do |f| %>
+  <div>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :detail %><br>
+    <%= f.text_area :detail %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

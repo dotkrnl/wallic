@@ -1,4 +1,13 @@
 Wallic::Application.routes.draw do
+  
+  resources :wallets, :shallow => true do
+    resources :items
+  end
+
+  root 'welcome#index'
+
+  get '/wallets/:id(.:format)/auth/:token' => 'wallets#auth'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
