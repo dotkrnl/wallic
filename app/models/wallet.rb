@@ -1,4 +1,9 @@
+require 'SecureRandom'
+
 class Wallet < ActiveRecord::Base
+
+  before_create :set_default_name
+  before_create :set_default_secret
 
   has_many :items, dependent: :destroy
 
@@ -22,6 +27,27 @@ class Wallet < ActiveRecord::Base
 
   def write?(session)
     session[self.id] and session[self.id][:write]
+  end
+
+private
+
+  def set_default_name
+    if not self.name or self.name == ''
+      self.name = 'Untitled'
+    end
+  end
+
+  def set_default_secret
+    if not self.secret_read
+      self.secret_read = generate_secret
+    end
+    if not self.secret_rw
+      self.secret_rw = generate_secret
+    end
+  end
+
+  def generate_secret
+    SecureRandom.hex Global.security.secret_len
   end
 
 end

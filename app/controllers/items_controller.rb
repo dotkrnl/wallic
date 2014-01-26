@@ -5,8 +5,12 @@ class ItemsController < ApplicationController
     if not @wallet.write? session
       redirect_to @wallet, :alert => 'Permission denied'
     else
-      @item = @wallet.items.create(item_params)
-      redirect_to @wallet
+      @item = @wallet.items.new(item_params)
+      if not @item.save
+        redirect_to @wallet, :alert => 'Bad information'
+      else
+        redirect_to @wallet
+      end
     end
   end
 

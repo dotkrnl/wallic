@@ -1,5 +1,3 @@
-require 'SecureRandom'
-
 class WalletsController < ApplicationController
 
   def show
@@ -15,15 +13,13 @@ class WalletsController < ApplicationController
   def create
     wallet = wallet_params
     wallet['name'].strip!
-    if wallet['name'] == ''
-      wallet['name'] = 'Untitled'
-    end
-    wallet['secret_read'] = generate_secret
-    wallet['secret_rw'] = generate_secret
     @wallet = Wallet.new wallet
-    @wallet.save
-    @wallet.auth! session, wallet['secret_rw']
-    redirect_to @wallet, :notice => 'Wallet created'
+    if not @wallet.save
+      redirect_to '/', :alert => 'Bad information'
+    else
+      @wallet.auth! session, @wallet.secret_rw
+      redirect_to @wallet, :notice => 'Wallet created'
+    end
   end
 
   def auth
@@ -37,10 +33,6 @@ class WalletsController < ApplicationController
   end
 
 private
-
-  def generate_secret
-    SecureRandom.hex Global.security.secret_len
-  end
 
   def wallet_params
     params.require(:wallet).permit :name, :detail
