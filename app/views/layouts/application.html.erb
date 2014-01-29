@@ -12,8 +12,8 @@
 
 <h1 id="logo"><%= @title or "Wallic" %></h1>
 
-<% if flash[:alert] %><div class="message"><%= flash[:alert] %></div><% end %>
-<% if flash[:notice] %><div class="message"><%= flash[:notice] %></div><% end %>
+<% if flash[:alert] %><div class="message"><%= flash[:alert] %></div><br><% end %>
+<% if flash[:notice] %><div class="message"><%= flash[:notice] %></div><br><% end %>
 
 <%= yield %>
 

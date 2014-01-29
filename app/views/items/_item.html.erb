@@ -11,9 +11,9 @@
   <% if item.delta == 0 %>  
     <span>¥<%= item.delta %></span>
   <% elsif item.delta > 0 %>
-    <span class="green">¥<%= item.delta %></span>
+    <span class="red">¥<%= item.delta %></span>
   <% else %>
-    <span class="red">¥<%= -item.delta %></span>
+    <span class="green">¥<%= -item.delta %></span>
   <% end %>
   </h2>
   <p> <%= item.detail %> </p>
