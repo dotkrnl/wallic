@@ -1,14 +1,5 @@
 <%= form_for [@wallet, @wallet.items.build] do |f| %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div>
-    <%= f.label :delta %>
-    <%= f.text_field :delta %>
-  </div>
-  <div>
-    <%= f.submit class: "button" %>
-  </div>
+  <%= f.text_field :name, class: "midlen" %> △ <%= f.text_field :delta, class: "short" %>
+  <%= f.submit class: "inline_button", value: "pay" %>
 <% end %>
 <br/>

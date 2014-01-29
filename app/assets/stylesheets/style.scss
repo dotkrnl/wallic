@@ -4,7 +4,7 @@ body {
     $padding-right:     3.0em;
     $padding-other:     2.0em;
     $ls-mul:            2.0;
-    $ms-mul:            0.3;
+    $ms-mul:            0.7;
     padding:
         ($padding-other * $ls-mul) ($padding-right * $ls-mul)
         ($padding-other * $ls-mul) ($padding-other * $ls-mul);
@@ -99,7 +99,7 @@ select {
     }
 }
 
-.button {
+.button, .inline_button {
     color: white;
     background-color: #777;
     margin-top: 1.5em;
@@ -153,4 +153,25 @@ label {
 
 #footer {
     margin-top: 2em;
+}
+
+.inline_button {
+    margin: 0;
+    width: auto;
+}
+
+.short {
+    width: 3em;
+}
+
+.midlen {
+    width: 8em;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
 }

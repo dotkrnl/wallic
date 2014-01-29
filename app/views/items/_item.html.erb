@@ -7,7 +7,15 @@
                   data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>
-  <h2><%= item.name %> △ ¥<%= item.delta %></h2>
+  <h2><%= item.name %> △ 
+  <% if item.delta == 0 %>  
+    <span>¥<%= item.delta %></span>
+  <% elsif item.delta > 0 %>
+    <span class="green">¥<%= item.delta %></span>
+  <% else %>
+    <span class="red">¥<%= -item.delta %></span>
+  <% end %>
+  </h2>
   <p> <%= item.detail %> </p>
   <div class="note" title="was created at <%= item.created_at %> and updated at <%= item.updated_at %>"> @ <%= item.time %> </div>
   </li>

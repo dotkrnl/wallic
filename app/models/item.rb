@@ -10,7 +10,7 @@ private
 
   def set_default_name
     if not self.name or self.name == ''
-      self.name = 'Unknown'
+      self.name = 'N/A'
     end
   end
 
