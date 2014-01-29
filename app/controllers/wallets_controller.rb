@@ -2,12 +2,14 @@ class WalletsController < ApplicationController
 
   def show
     @wallet = Wallet.find params[:id]
+    @title = @wallet.name
     if not @wallet.read? session
       redirect_to '/', :alert => 'Permission denied'
     end
   end
 
   def new
+    @title = 'New Wallet'
   end
 
   def create

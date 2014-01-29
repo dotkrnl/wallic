@@ -1,10 +1,21 @@
-<p> Name: <%= @wallet.name %> </p>
-<p> Detail: <%= @wallet.detail %> </p>
-<p> Sum: <%= @wallet.items.sum('delta') %> </p>
+<div class="note"> 
+<% if @wallet.read? session %>
+  <%= link_to "read access", auth_url(@wallet.id, @wallet.secret_read) %> | 
+<% end %>
+<% if @wallet.write? session %>
+  <%= link_to "write access", auth_url(@wallet.id, @wallet.secret_rw) %> |
+<% end %>
+<%= @wallet.detail %>
+</div>
 
-<% if @wallet.read? session %><p> read: <%= @wallet.secret_read %> </p><% end %>
-<% if @wallet.write? session %><p> r/w: <%= @wallet.secret_rw %> </p><% end %>
+<br/>
 
-<%= render "items/form" %>
+<div class="sum">¥ <%= @wallet.items.sum('delta') %></div>
 
-<%= render @wallet.items %>
+<% if @wallet.write? session %>
+  <%= render "items/simple_form" %>
+<% end %>
+
+<ul id="mesglist">
+  <%= render @wallet.items %>
+</ul>

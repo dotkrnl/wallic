@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Wallic</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title><%= @title or "Wallic" %> | Wallic</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<% if flash[:alert] %><p id="alert"><%= flash[:alert] %></p><% end %>
-<% if flash[:notice] %><p id="notice"><%= flash[:notice] %></p><% end %>
+<h1 id="logo"><%= @title or "Wallic" %></h1>
+
+<% if flash[:alert] %><div class="message"><%= flash[:alert] %></div><% end %>
+<% if flash[:notice] %><div class="message"><%= flash[:notice] %></div><% end %>
 
 <%= yield %>
+
+<div id="footer">© 2014 dotkrnl</div>
 
 </body>
 </html>

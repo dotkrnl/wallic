@@ -2,7 +2,7 @@ require 'SecureRandom'
 
 class Wallet < ActiveRecord::Base
 
-  before_create :set_default_name
+  before_create :set_default_info
   before_create :set_default_secret
 
   has_many :items, dependent: :destroy
@@ -31,9 +31,12 @@ class Wallet < ActiveRecord::Base
 
 private
 
-  def set_default_name
+  def set_default_info
     if not self.name or self.name == ''
       self.name = 'Untitled'
+    end
+    if not self.detail or self.detail == ''
+      self.detail = 'yet anothor wallet'
     end
   end
 

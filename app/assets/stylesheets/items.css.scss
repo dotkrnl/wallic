@@ -1,3 +1,14 @@
 // Place all the styles related to the Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "constants.scss";
+
+.list_info {
+    list-style-type: none;
+    background-color: #f7f7f7;
+    padding: .9em 1.2em .9em 1.2em;
+    @media screen and (max-width: $mobilescreen) {
+        padding: .6em .8em .6em .8em;
+    }
+}

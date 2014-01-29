@@ -1,11 +1,4 @@
-$link-color:    #999999;
-$header-color:  #333333;
-$text-color:    #555555;
-$background:    #fcfcfc;
-$emphasize:     #4e8ca6;
-
-$smallscreen:   960px;
-$mobilescreen:  600px;
+@import "constants.scss";
 
 body {
     $padding-right:     3.0em;
@@ -121,9 +114,16 @@ label {
     text-align: right;
 }
 
-.note, #footer {
+.note, #footer, .x {
     font-size: 0.6em;
     padding: 0.5em 0 0.5em 0;
+}
+
+.message {
+    color: white;
+    background-color: #4e8ca6;
+    padding: 0.8em;
+    margin-top: 1em;
 }
 
 .list_info {
@@ -145,4 +145,12 @@ label {
 
 .hidden {
     display: none;
+}
+
+.x {
+    float: right;
+}
+
+#footer {
+    margin-top: 2em;
 }

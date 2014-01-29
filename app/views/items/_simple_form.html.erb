@@ -1,0 +1,14 @@
+<%= form_for [@wallet, @wallet.items.build] do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :delta %>
+    <%= f.text_field :delta %>
+  </div>
+  <div>
+    <%= f.submit class: "button" %>
+  </div>
+<% end %>
+<br/>
