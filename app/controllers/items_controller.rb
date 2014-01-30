@@ -30,7 +30,6 @@ class ItemsController < ApplicationController
     if not @wallet.read? session
       redirect_to :back, :alert => 'Permission denied'
     else
-      @title = @wallet.name
       @items = @wallet.items.paginate(:page => params[:page])
     end
   end
