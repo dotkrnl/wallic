@@ -13,7 +13,7 @@
 
 <br/>
 
-<div class="sum">¥ <%= -@wallet.items.sum('delta') %></div>
+<div class="sum">¥ <%= - (@wallet.items.sum 'delta') %></div>
 
 <% if @wallet.write? session %>
   <%= render "items/simple_form" %>
