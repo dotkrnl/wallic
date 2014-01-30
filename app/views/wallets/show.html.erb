@@ -13,7 +13,16 @@
 
 <br/>
 
-<div class="sum">¥ <%= - (@wallet.items.sum 'delta') %></div>
+<div class="sum">
+<% sum = @wallet.items.sum 'delta' %>
+<% if sum == 0 %>
+  ¥ <%= sum %>
+<% elsif sum > 0 %>
+  <span class="red"> ¥ <%= sum %> </span>
+<% else %>
+  ¥ <%= -sum %>
+<% end %>
+</div>
 
 <% if @wallet.write? session %>
   <%= render "items/simple_form" %>
