@@ -1,0 +1,24 @@
+<% content_for :title do -%>Edit Item | <%= @wallet.name %><% end -%>
+<% content_for :back_url do -%><%= wallet_path @wallet.id %><% end -%>
+
+<%= form_for @item, url: wallet_item_path  do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :delta %>
+    <%= f.text_field :delta %>
+  </div>
+  <div>
+    <%= f.label :detail %>
+    <%= f.text_field :detail %>
+  </div>
+  <div>
+    <%= f.label :time %>
+    <%= f.text_field :time, :value => @item.time.localtime.strftime("%Y-%m-%d %H:%M:%S %z") %>
+  </div>
+  <div>
+    <%= f.submit class: "button" %>
+  </div>
+<% end %>

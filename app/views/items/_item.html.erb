@@ -2,6 +2,7 @@
   <li class="list_info">
   <% if @wallet.write? session %>
     <div class="x">
+      <%= link_to '✎', edit_wallet_item_path(item.wallet, item) %>
       <%= link_to 'x', [item.wallet, item],
                   method: :delete,
                   data: { confirm: 'Are you sure?' } %>

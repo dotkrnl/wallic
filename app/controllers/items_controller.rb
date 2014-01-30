@@ -30,7 +30,31 @@ class ItemsController < ApplicationController
     if not @wallet.read? session
       redirect_to :back, :alert => 'Permission denied'
     else
-      @items = @wallet.items.paginate :page => params[:page]
+      @items = @wallet.items.order('time').paginate :page => params[:page]
+    end
+  end
+
+  def edit
+    @wallet = Wallet.find params[:wallet_id]
+    if not @wallet.write? session
+      redirect_to :back, :alert => 'Permission denied'
+    else
+      @item = @wallet.items.find params[:id]
+    end
+  end
+
+  def update
+    @wallet = Wallet.find params[:wallet_id]
+    if not @wallet.write? session
+      redirect_to :back, :alert => 'Permission denied'
+    else
+      @item = @wallet.items.find params[:id]
+      begin
+        @item.update_attributes(item_params)
+        redirect_to @wallet, :alert => 'Item updated'
+      rescue
+        redirect_to edit_wallet_item_path, :alert => 'Bad information'
+      end
     end
   end
 
