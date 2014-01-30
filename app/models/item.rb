@@ -5,6 +5,8 @@ class Item < ActiveRecord::Base
   before_create :set_default_name
   before_create :set_default_delta
   before_create :set_default_time
+  
+  self.per_page = 10
 
 private
 

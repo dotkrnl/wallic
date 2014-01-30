@@ -17,11 +17,21 @@ class ItemsController < ApplicationController
   def destroy
     @wallet = Wallet.find(params[:wallet_id])
     if not @wallet.write? session
-      redirect_toi :back, :alert => 'Permission denied'
+      redirect_to :back, :alert => 'Permission denied'
     else
       @item = @wallet.items.find(params[:id])
       @item.destroy
       redirect_to :back 
+    end
+  end
+
+  def index
+    @wallet = Wallet.find(params[:wallet_id])
+    if not @wallet.read? session
+      redirect_to :back, :alert => 'Permission denied'
+    else
+      @title = @wallet.name
+      @items = @wallet.items.paginate(:page => params[:page])
     end
   end
 

@@ -45,3 +45,4 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'global'
+gem 'will_paginate', '~> 3.0'

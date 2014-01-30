@@ -16,6 +16,12 @@
   <%= render "items/simple_form" %>
 <% end %>
 
-<ul id="mesglist">
-  <%= render @wallet.items.reverse %>
+<ul id="item_list">
+  <%= render @wallet.items.order("time desc").limit 5 %>
 </ul>
+
+<% if @wallet.items.count > 5 %>
+  <div class="pagination">
+    <%= link_to "← Previous", wallet_items_url(@wallet.id), class: "previous_page" %>
+  </div>
+<% end %>

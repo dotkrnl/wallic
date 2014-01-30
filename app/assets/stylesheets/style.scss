@@ -134,12 +134,12 @@ label {
     }
 }
 
-#lrnav_bar {
+.pagination {
     padding-top: 1em;
     padding-bottom: 1em;
 }
 
-.lrnav {
+.previous_page .next_page {
     padding-right: 2em;
 }
 
@@ -174,4 +174,8 @@ label {
 
 .green {
     color: green;
+}
+
+.current {
+    font-style: normal;
 }
