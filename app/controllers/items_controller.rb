@@ -31,17 +31,14 @@ class ItemsController < ApplicationController
     if not @wallet.read? session
       redirect_to :back, :alert => 'Permission denied'
     else
-      @items = @wallet.items.order('time').paginate :page => params[:page]
-    end
-  end
-
-  def index_tag
-    @wallet = Wallet.find params[:wallet_id]
-    if not @wallet.read? session
-      redirect_to :back, :alert => 'Permission denied'
-    else
-      @items = @wallet.items.tagged_with(params[:tag])
-                      .order('time').paginate :page => params[:page]
+      if params[:tag]
+        items = @wallet.items.tagged_with params[:tag]
+      elsif params[:name]
+        items = @wallet.items.where :name => params[:name]
+      else
+        items = @wallet.items
+      end
+      @items = items.order('time').paginate :page => params[:page]
     end
   end
 

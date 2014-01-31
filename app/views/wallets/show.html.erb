@@ -31,7 +31,7 @@
 <ul class="tag_list">
   <% @tags.each do |tag| %>
     <li class="tag_info">
-      <%= link_to '#' + tag[1], wallet_items_tag_path(@wallet, tag[1]) %>
+      <%= link_to '#' + tag[1], wallet_items_path(@wallet, :tag => tag[1]) %>
       <span>¥<%= tag[0] %></span>
     </li>
   <% end %>

@@ -1,4 +1,8 @@
-<% content_for :title do -%><%= @wallet.name %><% end -%>
+<% content_for :title do -%>
+  <% if params[:tag] %><%= @wallet.name %>#<%= params[:tag] %>
+  <% elsif params[:name] %><%= @wallet.name %>?<%= params[:name] %>
+  <% else %><%= @wallet.name %><% end %>
+<% end -%>
 <% content_for :back_url do -%><%= wallet_path @wallet.id %><% end -%>
 
 <ul class="item_list">
