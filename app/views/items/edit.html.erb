@@ -8,15 +8,15 @@
   </div>
   <div>
     <%= f.label :delta %>
-    <%= f.text_field :delta %>
+    <%= f.text_field :delta, autocomplete: "off" %>
   </div>
   <div>
     <%= f.label :detail %>
-    <%= f.text_field :detail %>
+    <%= f.text_field :detail, autocomplete: "off" %>
   </div>
   <div>
     <%= f.label :time %>
-    <%= f.text_field :time, :value => @item.time.localtime.strftime("%Y-%m-%d %H:%M:%S %z") %>
+    <%= f.text_field :time, :value => @item.time.localtime.strftime("%Y-%m-%d %H:%M:%S %z"), autocomplete: "off" %>
   </div>
   <div>
     <%= f.submit class: "button" %>

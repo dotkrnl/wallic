@@ -4,7 +4,12 @@
 
 @import "constants.scss";
 
-.list_info {
+.item_list {
+    clear: both;
+    padding-top: 1em;
+}
+
+.item_info {
     list-style-type: none;
     background-color: #f7f7f7;
     padding: .9em 1.2em .9em 1.2em;

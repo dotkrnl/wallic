@@ -1,5 +1,5 @@
 <% if item.created_at %>
-  <li class="list_info">
+  <li class="item_info">
   <% if @wallet.write? session %>
     <div class="x">
       <%= link_to '✎', edit_wallet_item_path(item.wallet, item) %>

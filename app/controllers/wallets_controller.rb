@@ -4,6 +4,12 @@ class WalletsController < ApplicationController
     @wallet = Wallet.find params[:id]
     if not @wallet.read? session
       redirect_to '/', :alert => 'Permission denied'
+    else
+      @tags = []
+      @wallet.items.tag_counts.each do |tag|
+        @tags << [@wallet.items.tagged_with(tag.name).sum('delta'), tag.name]
+      end
+      @tags.sort!.reverse!
     end
   end
 

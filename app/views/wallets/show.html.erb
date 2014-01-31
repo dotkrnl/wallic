@@ -11,7 +11,7 @@
 <%= @wallet.detail %>
 </div>
 
-<br/>
+<br>
 
 <div class="sum">
 <% sum = @wallet.items.sum 'delta' %>
@@ -28,7 +28,16 @@
   <%= render "items/simple_form" %>
 <% end %>
 
-<ul id="item_list">
+<ul class="tag_list">
+  <% @tags.each do |tag| %>
+    <li class="tag_info">
+      <span>#<%= tag[1] %></span>
+      <span>¥<%= tag[0] %></span>
+    </li>
+  <% end %>
+</ul>
+
+<ul class="item_list">
   <%= render @wallet.items.order("time desc").limit 5 %>
 </ul>
 

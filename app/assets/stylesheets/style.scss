@@ -126,14 +126,6 @@ label {
     margin-top: 1em;
 }
 
-.list_info {
-    list-style-type: none;
-    padding: .9em 1.2em .9em 1.2em;
-    @media screen and (max-width: $mobilescreen) {
-        padding: .6em .8em .6em .8em;
-    }
-}
-
 .pagination {
     padding-top: 1em;
     padding-bottom: 1em;
@@ -189,4 +181,14 @@ label {
     margin-right: 0.5em;
     color: white;
     background-color: #777;
+}
+
+.tag_info {
+    float: left;
+    list-style-type: none;
+    background-color: #f7f7f7;
+    padding: .9em 1.2em .9em 1.2em;
+    @media screen and (max-width: $mobilescreen) {
+        padding: .6em .8em .6em .8em;
+    }
 }
