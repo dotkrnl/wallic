@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140126054816) do
+ActiveRecord::Schema.define(version: 20140130131540) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "items", force: true do |t|
     t.string   "name"
@@ -23,7 +26,25 @@ ActiveRecord::Schema.define(version: 20140126054816) do
     t.datetime "updated_at"
   end
 
-  add_index "items", ["wallet_id"], name: "index_items_on_wallet_id"
+  add_index "items", ["wallet_id"], name: "index_items_on_wallet_id", using: :btree
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string "name"
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "wallets", force: true do |t|
     t.string   "name"

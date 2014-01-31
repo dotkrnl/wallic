@@ -6,7 +6,10 @@ Wallic::Application.routes.draw do
 
   root 'welcome#index'
 
-  get '/wallets/:id(.:format)/auth/:token' => 'wallets#auth', :as => :auth
+  get '/wallets/:id(.:format)/auth/:token' => 'wallets#auth', :as => :auth_wallet
+
+  get '/wallets/:wallet_id/items/:id(.:format)/tag' => 'items#tag', :as => :tag_wallet_item
+  delete '/wallets/:wallet_id/items/:id(.:format)/tag' => 'items#untag', :as => :untag_wallet_item
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -22,3 +22,19 @@
     <%= f.submit class: "button" %>
   </div>
 <% end %>
+
+<div class="tags">
+  <% @item.tags.each do |item| %>
+    <span class="tag">
+      <span>#<%= item.name %></span>
+      <%= link_to 'x', tag_wallet_item_path(@wallet, @item, :tag => item.name),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
+    </span>
+  <% end %>
+</div>
+
+<form accept-charset="UTF-8" action="<%= tag_wallet_item_path(@wallet, @item) %>", method="get">
+  <input class="midlen" id="tag" name="tag" type="text">
+  <input class="inline_button" type="submit" value="tag">
+</form>

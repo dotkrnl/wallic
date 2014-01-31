@@ -3,10 +3,10 @@
 
 <div class="note"> 
 <% if @wallet.read? session %>
-  <%= link_to "read access", auth_url(@wallet.id, @wallet.secret_read) %> | 
+  <%= link_to "read access", auth_wallet_url(@wallet.id, @wallet.secret_read) %> | 
 <% end %>
 <% if @wallet.write? session %>
-  <%= link_to "write access", auth_url(@wallet.id, @wallet.secret_rw) %> |
+  <%= link_to "write access", auth_wallet_url(@wallet.id, @wallet.secret_rw) %> |
 <% end %>
 <%= @wallet.detail %>
 </div>

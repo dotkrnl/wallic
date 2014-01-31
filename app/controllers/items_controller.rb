@@ -58,6 +58,31 @@ class ItemsController < ApplicationController
     end
   end
 
+  def tag
+    @wallet = Wallet.find params[:wallet_id]
+    if not @wallet.write? session
+      redirect_to :back, :alert => 'Permission denied'
+    else
+      @item = @wallet.items.find params[:id]
+      aTag = params[:tag].gsub '#', ''
+      @item.tag_list.add aTag
+      @item.save
+      redirect_to :back
+    end
+  end
+
+  def untag
+    @wallet = Wallet.find params[:wallet_id]
+    if not @wallet.write? session
+      redirect_to :back, :alert => 'Permission denied'
+    else
+      @item = @wallet.items.find params[:id]
+      @item.tag_list.remove params[:tag]
+      @item.save
+      redirect_to :back
+    end
+  end
+
 private
 
   def item_params
