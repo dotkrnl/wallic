@@ -41,6 +41,11 @@
   <%= render @wallet.items.order("time desc").limit 5 %>
 </ul>
 
+<form accept-charset="UTF-8" action="<%= wallet_items_path @wallet %>", method="get", class="search">
+  <input class="midlen" id="name" name="name" type="text">
+  <input class="inline_button" type="submit" value="?">
+</form>
+
 <% if @wallet.items.count > 5 %>
   <div class="pagination">
     <%= link_to "← Previous", wallet_items_url(@wallet.id), class: "previous_page" %>

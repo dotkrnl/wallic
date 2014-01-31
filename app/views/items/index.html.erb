@@ -9,4 +9,9 @@
   <%= render @items %>
 </ul>
 
+<form accept-charset="UTF-8" action="<%= wallet_items_path @wallet %>", method="get", class="search">
+  <input class="midlen" id="name" name="name" type="text">
+  <input class="inline_button" type="submit" value="?">
+</form>
+
 <%= will_paginate @items %>

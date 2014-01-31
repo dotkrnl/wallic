@@ -27,6 +27,9 @@ class ItemsController < ApplicationController
   end
 
   def index
+    if params[:name] and params[:name][0] == '#'
+      redirect_to(wallet_items_path :tag => params[:name][1..-1])
+    end
     @wallet = Wallet.find params[:wallet_id]
     if not @wallet.read? session
       redirect_to :back, :alert => 'Permission denied'
