@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
       redirect_to @wallet, :alert => 'Permission denied'
     else
       @item = @wallet.items.new item_params
+      extract_tags_from_name
       if not @item.save
         redirect_to @wallet, :alert => 'Bad information'
       else
@@ -87,6 +88,17 @@ private
 
   def item_params
     params.require(:item).permit :name, :detail, :delta, :time
+  end
+
+  def extract_tags_from_name
+    info = @item.name.split '#'
+    info[0] = info[0] || ''
+    @item.name = info[0].strip
+    info[1..-1].each do |tag|
+      if tag.strip != ''
+        @item.tag_list.add tag.strip
+      end
+    end
   end
 
 end
