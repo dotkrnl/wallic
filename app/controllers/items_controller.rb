@@ -35,6 +35,16 @@ class ItemsController < ApplicationController
     end
   end
 
+  def index_tag
+    @wallet = Wallet.find params[:wallet_id]
+    if not @wallet.read? session
+      redirect_to :back, :alert => 'Permission denied'
+    else
+      @items = @wallet.items.tagged_with(params[:tag])
+                      .order('time').paginate :page => params[:page]
+    end
+  end
+
   def edit
     @wallet = Wallet.find params[:wallet_id]
     if not @wallet.write? session
