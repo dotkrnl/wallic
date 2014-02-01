@@ -2,12 +2,7 @@
 <% content_for :back_url do -%><%= wallet_path @wallet.id %><% end -%>
 
 <div class="note"> 
-<% if @wallet.read? session %>
-  <%= link_to "read access", auth_wallet_url(@wallet.id, @wallet.secret_read) %> | 
-<% end %>
-<% if @wallet.write? session %>
-  <%= link_to "write access", auth_wallet_url(@wallet.id, @wallet.secret_rw) %> |
-<% end %>
+<%= link_to "share", share_wallet_path(@wallet.id) %> |
 <%= @wallet.detail %>
 </div>
 

@@ -24,7 +24,7 @@ class WalletsController < ApplicationController
       redirect_to '/', :alert => 'Bad information'
     else
       @wallet.auth! session, @wallet.secret_rw
-      redirect_to @wallet, :notice => 'Wallet created'
+      redirect_to share_wallet_path(@wallet.id), :notice => 'Wallet created'
     end
   end
 
@@ -35,6 +35,13 @@ class WalletsController < ApplicationController
       redirect_to @wallet
     else
       redirect_to '/', :alert => 'Bad token'
+    end
+  end
+
+  def share
+    @wallet = Wallet.find params[:id]
+    if not @wallet.read? session
+      redirect_to '/', :alert => 'Permission denied'
     end
   end
 

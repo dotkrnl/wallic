@@ -1,0 +1,22 @@
+<% content_for :title do -%><%= @wallet.name %><% end -%>
+<% content_for :back_url do -%><%= wallet_path @wallet.id %><% end -%>
+
+<% if @wallet.write? session %>
+  <h2>cooperate</h2>
+  <p><b>drag and drop "<%= link_to @wallet.name + ' wallet', auth_wallet_url(@wallet.id, @wallet.secret_rw) %>" to bookmarks bar for your future access.</b></p>
+  <p>share the link below with full permissions granted.</p>
+  <p><input class="long" value="<%= auth_wallet_url(@wallet.id, @wallet.secret_rw) %>"></input></p>
+<% end %>
+
+<% if @wallet.read? session %>
+  <h2>publish</h2>
+  <p>share the link below with read permission granted.</p>
+  <p><input class="long" value="<%= auth_wallet_url(@wallet.id, @wallet.secret_read) %>"></input></p>
+<% end %>
+
+<h2><a href="<%= yield :back_url %>">go to wallet</a></h2>
+
+<form accept-charset="UTF-8" action="<%= wallet_items_path @wallet %>", method="get", class="search">
+  <input class="midlen" id="name" name="name" type="text">
+  <input class="inline_button" type="submit" value="?">
+</form>
