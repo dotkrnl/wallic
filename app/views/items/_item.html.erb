@@ -8,7 +8,7 @@
                   data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>
-  <h2><%= item.name %> △ 
+  <h3><%= item.name %> △ 
   <% if item.delta == 0 %>  
     <span>¥<%= item.delta %></span>
   <% elsif item.delta > 0 %>
@@ -16,7 +16,7 @@
   <% else %>
     <span class="green">¥<%= -item.delta %></span>
   <% end %>
-  </h2>
+  </h3>
   <p> <%= item.detail %> </p>
   <div class="note" title="created at <%= item.created_at.localtime %> and updated at <%= item.updated_at.localtime %>">
     <% item.tags.each do |i| %>
