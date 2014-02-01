@@ -1,4 +1,4 @@
-<% content_for :title do -%>Edit Item | <%= @wallet.name %><% end -%>
+<% content_for :title do -%><%= @wallet.name %><% end -%>
 <% content_for :back_url do -%><%= wallet_path @wallet.id %><% end -%>
 
 <%= form_for @item, url: wallet_item_path  do |f| %>

@@ -1,5 +1,7 @@
 <%= form_for [@wallet, @wallet.items.build] do |f| %>
-  <%= f.text_field :name, class: "midlen", autocomplete: "off"%> △ <%= f.text_field :delta, class: "short", autocomplete: "off" %>
+  <%= f.text_field :name, class: "midlen", autocomplete: "off"%>
+  <span>&nbsp;△&nbsp;</span>
+  <%= f.text_field :delta, class: "short", autocomplete: "off" %>
   <%= f.submit class: "inline_button", value: "pay" %>
 <% end %>
 <br/>

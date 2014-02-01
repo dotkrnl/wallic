@@ -22,7 +22,7 @@ body {
     max-width: 800px;
     color: $text-color;
     background-color: $background;
-    font: 1em 
+    font: 16px
         "Lucida Grande", Helvetica, Arial, "Droid Sans",
         "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 }
@@ -155,10 +155,16 @@ label {
 
 .short {
     width: 3em;
+    @media screen and (max-width: $mobilescreen) {
+        width: 2em;
+    }
 }
 
 .midlen {
     width: 8em;
+    @media screen and (max-width: $mobilescreen) {
+        width: 5em;
+    }
 }
 
 .long {
@@ -208,5 +214,12 @@ label {
         position: absolute;
         top: 0.5em;
         right: 0em;
+    }
+}
+
+form {
+    font-size: 0;
+    input, span, label {
+        font-size: 16px;
     }
 }

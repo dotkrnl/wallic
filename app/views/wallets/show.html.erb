@@ -11,11 +11,11 @@
 <div class="sum">
 <% sum = @wallet.items.sum 'delta' %>
 <% if sum == 0 %>
-  ¥ <%= sum %>
+  ¥<%= sum %>
 <% elsif sum > 0 %>
-  <span class="red"> ¥ <%= sum %> </span>
+  <span class="red"> ¥<%= sum %> </span>
 <% else %>
-  ¥ <%= -sum %>
+  ¥<%= -sum %>
 <% end %>
 </div>
 
