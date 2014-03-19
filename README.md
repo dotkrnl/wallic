@@ -1,4 +1,4 @@
 wallic
 ======
 
-WALLIC: make WALlet pubLIC, a simple rails app for publishing account of payments.
+wallic: make wallet public, a simple rails app for publishing account of payments.
